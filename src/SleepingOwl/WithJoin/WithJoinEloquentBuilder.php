@@ -62,7 +62,7 @@ class WithJoinEloquentBuilder extends Builder
 	 */
 	protected function addNestedRelations($name, Relation $relation)
 	{
-		$nestedRelations = $this->nestedRelations($name);
+		$nestedRelations = method_exists($this, 'nestedRelations') ? $this->nestedRelations($name) : $this->relationsNestedUnder($name);
 		if (count($nestedRelations) <= 0) return;
 
 		$class = $relation->getRelated();
@@ -82,14 +82,15 @@ class WithJoinEloquentBuilder extends Builder
 	protected function addJoinToQuery($joinTableAlias, $currentTableAlias, Relation $relation, $columnsPrefix = '')
 	{
 		$joinTableName = $relation->getRelated()->getTable();
-
+		$getOtherKey = !method_exists($relation, 'getOtherKey') ? $relation->getOwnerKey() : $relation->getOtherKey();
+		
 		$joinTable = implode(' as ', [
 			$joinTableName,
 			$joinTableAlias
 		]);
 		$joinLeftCondition = implode('.', [
 			$joinTableAlias,
-			$relation->getOtherKey()
+			$getOtherKey
 		]);
 		$joinRightCondition = implode('.', [
 			$currentTableAlias,
