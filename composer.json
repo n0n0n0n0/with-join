@@ -1,6 +1,6 @@
 {
 	"name": "n0n0n0n0/with-join",
-	"description": "Package to convert Eloquent BelongsTo subqueries into one query with left join.",
+	"description": "Package to convert Eloquent BelongsTo subqueries into one query with left join for Laravel 5+.",
 	"keywords": [
 		"laravel",
 		"activerecord",
@@ -11,12 +11,11 @@
 	"license": "MIT",
 	"authors": [
 		{
-			"name": "Sleeping Owl",
-			"email": "owl.sleeping@yahoo.com"
+			"name": "Sleeping Owl & nonono",
 		}
 	],
 	"require": {
-		"laravel/framework": ">5.4.0"
+		"laravel/framework": ">5.0.0"
 	},
 	"autoload": {
 		"psr-0": {
