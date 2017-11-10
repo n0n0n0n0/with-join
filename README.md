@@ -1,4 +1,4 @@
-## Package to convert Eloquent BelongsTo subqueries into one query with left join
+## Package to convert Eloquent BelongsTo subqueries into one query with left join for Laravel 5.5
 
 [![Build Status](https://travis-ci.org/sleeping-owl/with-join.svg?branch=master)](https://travis-ci.org/sleeping-owl/with-join)
 [![Latest Stable Version](https://poser.pugx.org/sleeping-owl/with-join/v/stable.svg)](https://packagist.org/packages/sleeping-owl/with-join)
@@ -146,20 +146,16 @@ select * from `districts` where `districts`.`id` in (?) order by `sort` asc
 
 		"sleeping-owl/with-join": "1.*"
 
-2. Use `\SleepingOwl\WithJoin\WithJoinTrait` trait in every eloquent model you want to use this package features:
+2. Use `\Nonono\WithJoin\WithJoinTrait` trait in every eloquent model you want to use this package features:
 
 	```php
 	class StreetImage extends \Eloquent
 	{
-		use \SleepingOwl\WithJoin\WithJoinTrait;
+		use \Nonono\WithJoin\WithJoinTrait;
 	}
 	```
 	
 3. That`s all.
-
-## Support Library
-
-You can donate via [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AXJMWMRPCBGVA) or in BTC: 13k36pym383rEmsBSLyWfT3TxCQMN2Lekd
 
 ## Copyright and License
 

@@ -1,5 +1,5 @@
 {
-	"name": "sleeping-owl/with-join",
+	"name": "n0n0n0n0/with-join",
 	"description": "Package to convert Eloquent BelongsTo subqueries into one query with left join.",
 	"keywords": [
 		"laravel",
@@ -16,16 +16,11 @@
 		}
 	],
 	"require": {
-		"php": ">=5.4.0",
-		"illuminate/support": ">=4.1",
-		"laravel/framework": ">5.0.0"
-	},
-	"require-dev": {
-		"illuminate/database": ">=4.1"
+		"laravel/framework": ">5.5.0"
 	},
 	"autoload": {
 		"psr-0": {
-			"SleepingOwl\\WithJoin": "src/"
+			"Nonono\\WithJoin": "src/"
 		}
 	},
 	"minimum-stability": "stable"

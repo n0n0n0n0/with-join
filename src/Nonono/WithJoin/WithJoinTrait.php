@@ -1,4 +1,4 @@
-<?php namespace SleepingOwl\WithJoin;
+<?php namespace Nonono\WithJoin;
 
 trait WithJoinTrait
 {
