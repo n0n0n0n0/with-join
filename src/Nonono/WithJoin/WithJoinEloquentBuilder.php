@@ -82,7 +82,7 @@ class WithJoinEloquentBuilder extends Builder
 	protected function addJoinToQuery($joinTableAlias, $currentTableAlias, Relation $relation, $columnsPrefix = '')
 	{
 		$joinTableName = $relation->getRelated()->getTable();
-		$getOwnerKey = !method_exists($relation, 'getOwnerKey') ? $relation->getOwnerKey() : $relation->getOwnerKey();
+		$getOwnerKey = !method_exists($relation, 'getOwnerKey') ? $relation->getOtherKey() : $relation->getOwnerKey();
 		
 		$joinTable = implode(' as ', [
 			$joinTableName,
