@@ -82,7 +82,7 @@ class WithJoinEloquentBuilder extends Builder
 	protected function addJoinToQuery($joinTableAlias, $currentTableAlias, Relation $relation, $columnsPrefix = '')
 	{
 		$joinTableName = $relation->getRelated()->getTable();
-		$getOtherKey = !method_exists($relation, 'getOtherKey') ? $relation->getOwnerKey() : $relation->getOtherKey();
+		$getOwnerKey = !method_exists($relation, 'getOwnerKey') ? $relation->getOwnerKey() : $relation->getOwnerKey();
 		
 		$joinTable = implode(' as ', [
 			$joinTableName,
@@ -90,7 +90,7 @@ class WithJoinEloquentBuilder extends Builder
 		]);
 		$joinLeftCondition = implode('.', [
 			$joinTableAlias,
-			$getOtherKey
+			$getOwnerKey
 		]);
 		$joinRightCondition = implode('.', [
 			$currentTableAlias,
