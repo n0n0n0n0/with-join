@@ -82,7 +82,7 @@ class WithJoinEloquentBuilder extends Builder
 	protected function addJoinToQuery($joinTableAlias, $currentTableAlias, Relation $relation, $columnsPrefix = '')
 	{
 		$joinTableName = $relation->getRelated()->getTable();
-		$getOwnerKey = !method_exists($relation, 'getOwnerKey') ? $relation->getOtherKey() : $relation->getOwnerKey();
+		$getOwnerKey = $this->getCorrectMethod($relation);
 		
 		$joinTable = implode(' as ', [
 			$joinTableName,
@@ -94,7 +94,7 @@ class WithJoinEloquentBuilder extends Builder
 		]);
 		$joinRightCondition = implode('.', [
 			$currentTableAlias,
-			$relation->getForeignKey()
+            $this->getCorrectMethod($relation)
 		]);
 
 		$this->query->leftJoin($joinTable, $joinLeftCondition, '=', $joinRightCondition);
@@ -106,6 +106,17 @@ class WithJoinEloquentBuilder extends Builder
 			$this->selectFromQuery($joinTableAlias, $column, $prefix . $column);
 		}
 	}
+
+	private function getCorrectMethod(Relation $relation)
+    {
+        if(method_exists($relation, 'getOwnerKey'))
+            return $relation->getOwnerKey();
+
+        if(method_exists($relation, 'getQualifiedForeignKeyName'))
+            return $relation->getQualifiedForeignKeyName();
+        if(method_exists($relation, 'getQualifiedForeignKey'))
+            return $relation->getQualifiedForeignKey();
+    }
 
 	/**
 	 * @param $name
